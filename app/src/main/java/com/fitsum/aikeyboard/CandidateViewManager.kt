@@ -1,4 +1,4 @@
-package com.ethiopia.keyboard.ui
+package com.fitsum.aikeyboard
 
 import android.view.LayoutInflater
 import android.view.View
