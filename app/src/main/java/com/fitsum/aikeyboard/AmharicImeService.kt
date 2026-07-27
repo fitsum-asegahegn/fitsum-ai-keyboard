@@ -1,4 +1,4 @@
-package com.ethiopia.keyboard.service
+package com.fitsum.aikeyboard
 
 import android.inputmethodservice.InputMethodService
 import android.view.View
