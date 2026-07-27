@@ -1,1 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<input-method xmlns:android="http://schemas.android.com/apk/res/android"
+    android:isDefault="true"
+    android:supportsSwitchingToNextInputMethod="true">
 
+    <subtype
+        android:label="Amharic (Ge'ez Transliteration)"
+        android:icon="@drawable/ic_ime_amharic"
+        android:imeSubtypeLocale="am_ET"
+        android:imeSubtypeMode="keyboard"
+        android:imeSubtypeExtraValue="KeyboardLayoutSet=amharic,AsciiCapable=true" />
+
+</input-method>
