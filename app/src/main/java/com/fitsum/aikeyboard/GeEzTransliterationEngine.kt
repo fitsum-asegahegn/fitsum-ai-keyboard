@@ -81,7 +81,17 @@ class GeEzTransliterationEngine {
             "addis" to listOf("አዲስ", "አዲሱ", "አዲሷ"),
             "abeba" to listOf("አበባ", "አበባዎች")
         )
-    }
+    } 
+        private val ENGLISH_TRANSLATION_MAP = mapOf(
+           "selam" to listOf("Hello", "Peace"),
+           "dehna" to listOf("Fine", "Well"),
+           "ityopya" to listOf("Ethiopia"),
+           "bunna" to listOf("Coffee"),
+           "ameseginalew" to listOf("Thank you"),
+           "addis" to listOf("New"),
+           "abeba" to listOf("Flower")
+)
+
 
     /**
      * Converts Latin input buffer to Ge'ez script and candidate predictions.
