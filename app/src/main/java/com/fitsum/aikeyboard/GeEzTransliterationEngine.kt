@@ -1,4 +1,4 @@
-package com.ethiopia.keyboard.engine
+package com.fitsum.aikeyboard
 
 /**
  * GeEzTransliterationEngine
