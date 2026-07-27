@@ -6,8 +6,9 @@ import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputConnection
 import android.widget.LinearLayout
 import com.ethiopia.keyboard.R
-import com.ethiopia.keyboard.engine.GeEzTransliterationEngine
-import com.ethiopia.keyboard.ui.CandidateViewManager
+import com.fitsum.aikeyboard.GeEzTransliterationEngine
+import com.fitsum.aikeyboard.CandidateViewManager
+
 
 /**
  * AmharicImeService
