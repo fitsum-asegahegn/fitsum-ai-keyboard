@@ -9,17 +9,16 @@ import com.fitsum.aikeyboard.R
 import com.fitsum.aikeyboard.GeEzTransliterationEngine
 import com.fitsum.aikeyboard.CandidateViewManager
 
-
 /**
  * AmharicImeService
- * Custom Android Keyboard Service that intercept typed Latin keys,
+ * Custom Android Keyboard Service that intercepts typed Latin keys,
  * computes Ge'ez script via GeEzTransliterationEngine, and updates
  * the active InputConnection via setComposingText & commitText.
  */
 class AmharicImeService : InputMethodService(), CandidateViewManager.CandidateClickListener {
 
     private lateinit var transliterationEngine: GeEzTransliterationEngine
-    private lateinit var candidateViewManager: CandidateViewManager
+    private var candidateViewManager: CandidateViewManager? = null
     
     // Internal state buffers
     private val wordBuffer = StringBuilder()
@@ -32,8 +31,7 @@ class AmharicImeService : InputMethodService(), CandidateViewManager.CandidateCl
     }
 
     override fun onCreateInputView(): View {
-        val keyboardView = layoutInflater.inflate(R.layout.keyboard_view, null)
-        // Set up keyboard key event listeners here (QWERTY soft layout or Ethiopian Fidel keycaps)
+        val keyboardView = layoutInflater.inflate(R.layout.candidate_bar, null)
         setupKeyListeners(keyboardView)
         return keyboardView
     }
@@ -86,7 +84,7 @@ class AmharicImeService : InputMethodService(), CandidateViewManager.CandidateCl
     private fun updateComposingText(ic: InputConnection) {
         if (wordBuffer.isEmpty()) {
             ic.finishComposingText()
-            candidateViewManager.updateCandidates(emptyList(), null)
+            candidateViewManager?.updateCandidates(emptyList(), null)
             return
         }
 
@@ -96,27 +94,23 @@ class AmharicImeService : InputMethodService(), CandidateViewManager.CandidateCl
         ic.setComposingText(result.geezText, 1)
 
         // Update candidate bar above keyboard
-        candidateViewManager.updateCandidates(result.candidates, result.activeOrderFamily)
+        candidateViewManager?.updateCandidates(result.candidates, result.activeOrderFamily)
     }
 
     /**
      * Handles backspace key press.
-     * If word buffer has content, remove last character from buffer.
-     * Otherwise, pass deleteSurroundingText(1, 0) to target field.
      */
     private fun handleBackspace(ic: InputConnection) {
         if (wordBuffer.isNotEmpty()) {
             wordBuffer.deleteCharAt(wordBuffer.length - 1)
             updateComposingText(ic)
         } else {
-            // No composing text -> delete character directly behind cursor in external app
             ic.deleteSurroundingText(1, 0)
         }
     }
 
     /**
      * Handles space key press.
-     * Commits the current Ge'ez word to target field, then adds a space.
      */
     private fun handleSpace(ic: InputConnection) {
         if (wordBuffer.isNotEmpty()) {
@@ -164,7 +158,7 @@ class AmharicImeService : InputMethodService(), CandidateViewManager.CandidateCl
 
     private fun clearComposingBuffer() {
         wordBuffer.clear()
-        candidateViewManager.updateCandidates(emptyList(), null)
+        candidateViewManager?.updateCandidates(emptyList(), null)
     }
 
     private fun toggleTransliterationMode() {
@@ -173,7 +167,7 @@ class AmharicImeService : InputMethodService(), CandidateViewManager.CandidateCl
     }
 
     private fun setupKeyListeners(view: View) {
-        // Wire keycap buttons to onKeyTyped(code)
+        // Soft key listeners setup
     }
 
     companion object {
