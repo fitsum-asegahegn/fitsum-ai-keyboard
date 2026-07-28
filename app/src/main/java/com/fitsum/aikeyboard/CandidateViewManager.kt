@@ -1,10 +1,9 @@
 package com.fitsum.aikeyboard
 
-import android.view.LayoutInflater
 import android.view.View
 import android.widget.LinearLayout
 import android.widget.TextView
-import com.ethiopia.keyboard.R
+import com.fitsum.aikeyboard.R
 
 /**
  * CandidateViewManager
@@ -32,18 +31,17 @@ class CandidateViewManager(
 
         // Render Primary Candidates (e.g. ሰላም, ሰላሜ, selam)
         candidates.forEachIndexed { index, candidate ->
-            val itemView = LayoutInflater.from(container.context).inflate(
-                R.layout.item_candidate, container, false
-            ) as TextView
-
-            itemView.text = candidate
-            if (index == 0) {
-                itemView.setTypeface(itemView.typeface, android.graphics.Typeface.BOLD)
-                itemView.textSize = 18f
-            }
-
-            itemView.setOnClickListener {
-                listener.onCandidateSelected(candidate)
+            val itemView = TextView(container.context).apply {
+                text = candidate
+                textSize = if (index == 0) 18f else 16f
+                setPadding(20, 10, 20, 10)
+                setTextColor(if (index == 0) 0xFFFFFFFF.toInt() else 0xFF94A3B8.toInt())
+                if (index == 0) {
+                    setTypeface(typeface, android.graphics.Typeface.BOLD)
+                }
+                setOnClickListener {
+                    listener.onCandidateSelected(candidate)
+                }
             }
 
             container.addView(itemView)
