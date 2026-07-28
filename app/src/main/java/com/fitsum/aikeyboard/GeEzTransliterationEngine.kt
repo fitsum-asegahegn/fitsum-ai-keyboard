@@ -56,7 +56,7 @@ class GeEzTransliterationEngine {
             OrderFamily("ገ", "g", arrayOf("ገ", "ጉ", "ጊ", "ጋ", "ጌ", "ግ", "ጎ"), arrayOf("ጓ", "ጐ", "ጒ", "ጔ", "ጕ")),
             OrderFamily("ጠ", "T", arrayOf("ጠ", "ጡ", "ጢ", "ጣ", "ጤ", "ጥ", "ጦ"), arrayOf("ጧ")),
             OrderFamily("ጨ", "CH", arrayOf("ጨ", "ጩ", "ጪ", "ጫ", "ጬ", "ጭ", "ጮ"), arrayOf("ጯ")),
-            OrderFamily("ጰ", "P", arrayOf("ጰ", "ጱ", "ጲ", "ጳ", "ጴ", "ጵ", "ጶ"), arrayOf("<ctrl42>")),
+            OrderFamily("ጰ", "P", arrayOf("ጰ", "ጱ", "ጲ", "ጳ", "ጴ", "ጵ", "ጶ"), arrayOf("ጷ")),
             OrderFamily("ጸ", "ts", arrayOf("ጸ", "ጹ", "ጺ", "ጻ", "ጼ", "ጽ", "ጾ"), arrayOf("ጿ")),
             OrderFamily("ፀ", "tz", arrayOf("ፀ", "ፁ", "ፁ", "ፃ", "ፄ", "ፅ", "ፆ")),
             OrderFamily("ፈ", "f", arrayOf("ፈ", "ፉ", "ፊ", "ፋ", "ፌ", "ፍ", "ፎ"), arrayOf("ፏ")),
@@ -81,17 +81,17 @@ class GeEzTransliterationEngine {
             "addis" to listOf("አዲስ", "አዲሱ", "አዲሷ"),
             "abeba" to listOf("አበባ", "አበባዎች")
         )
-    } 
-        private val ENGLISH_TRANSLATION_MAP = mapOf(
-           "selam" to listOf("Hello", "Peace"),
-           "dehna" to listOf("Fine", "Well"),
-           "ityopya" to listOf("Ethiopia"),
-           "bunna" to listOf("Coffee"),
-           "ameseginalew" to listOf("Thank you"),
-           "addis" to listOf("New"),
-           "abeba" to listOf("Flower")
-)
 
+        private val ENGLISH_TRANSLATION_MAP = mapOf(
+            "selam" to listOf("Hello", "Peace"),
+            "dehna" to listOf("Fine", "Well"),
+            "ityopya" to listOf("Ethiopia"),
+            "bunna" to listOf("Coffee"),
+            "ameseginalew" to listOf("Thank you"),
+            "addis" to listOf("New"),
+            "abeba" to listOf("Flower")
+        )
+    }
 
     /**
      * Converts Latin input buffer to Ge'ez script and candidate predictions.
